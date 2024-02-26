@@ -1,5 +1,5 @@
 
-const storage = localStorage 
+const storage = window.localStorage
 
  const dataToJeson = (data)=> JSON.stringify(data)
  

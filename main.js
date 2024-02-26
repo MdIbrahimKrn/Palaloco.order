@@ -77,7 +77,7 @@ const renderAllCustomerData = (orderpala,el)=>{
     
 }
 
-console.log(orderpala)
+
 
 
 const saveData = ()=>{

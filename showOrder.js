@@ -1,0 +1,1 @@
+renderAllCustomerData(orderpala,perOrderBody)

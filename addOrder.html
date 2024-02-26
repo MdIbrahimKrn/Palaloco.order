@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palaloco</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <header class="container">
+        <div class="header">
+            <h1 class="logo">pala loco fry</h1>
+            <a href="index.html">
+                <button style="background-color: brown;" id="add-order" class="add-order">&Cross;</button>
+            </a>
+        </div>
+    </header>
+        <main class="container">
+            <div class="all-order">
+                <div class="all-order-body" data-show-order class="show-orders">
+                    
+                </div>
+                <div class="all-order-head"><h2>add order</h2></div>
+                <div style="text-align: center;"> <input style="text-align: center;" data-customer-name type="text" placeholder="Customer Name.."></div>
+                <div id="show-menu-body" class="all-order-body items">
+                   
+                </div>
+            </div>
+          <div style="text-align:right;">
+            <button onclick="saveData()">Place Order</button>
+       </div>  
+        </main>
+    
+
+    <script src="database.js"></script>
+    <script src="main.js"></script>
+
+    <script src="addOrder.js"></script>
+</body>
+</html>

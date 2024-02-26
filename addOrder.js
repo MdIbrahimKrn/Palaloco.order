@@ -130,4 +130,4 @@ const getOrderData = (orderId)=>{
 
   }
 
-  console.log(showOrderEl)
+  

@@ -1,5 +1,5 @@
 
-const storage = window.localStorage
+const storage = localStorage 
 
  const dataToJeson = (data)=> JSON.stringify(data)
  
@@ -29,8 +29,10 @@ const menu = {
            1 : ["crispy single",7.5],
            2 : ["crispy double",12],
            3 : ["beef patty single",8],
-           4 : ["beef patty double",14],
-           5 : ["wrap",8],
+           4 : ["beef patty single(set)",10],
+           6 : ["beef patty double",14],
+           5 : ["beef patty double(set)",16],
+           7 : ["wrap",8],
             
         },
         chicken:{
@@ -50,10 +52,11 @@ const menu = {
 
     
     storage.getItem("menu") == null && setData("menu",menu) 
-    storage.getItem("order") == null && setData("order","") 
+    storage.getItem("order") == null && setData("order",{}) 
     storage.getItem("orderNumber") == null && setData("orderNumber",1) 
-
+    storage.getItem("optional") == null && setData("optional",{doneOrder : {}}) 
 const MENU = getData("menu")
 const orderpala = getData("order")
+const optional = getData("optional")
 
-  
+  console.log(optional)

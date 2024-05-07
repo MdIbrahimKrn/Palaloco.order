@@ -38,9 +38,8 @@ const showMenu = (menu)=>{
                         <span>Item Name</span>
                         <span>pic</span>
                         <span>typ</span>
-                        <span>+</span>
-                        <span>-</span>
-                        <span>pric</span>
+                        <span>note</span>
+                        <span>price</span>
                     </div>`
             for (const subItem in ans) {
                 if (ans.hasOwnProperty.call(ans, subItem)) {
@@ -50,14 +49,15 @@ const showMenu = (menu)=>{
                         <span> ${element[0]}</span>
                         <span><input data-pic-${item+subItem} style="width: 100%;" value = "1" type="number"></span>
                         <span><select data-type-${item+subItem} style="width: 70%;" name="" id="">
-                            <option selected value="1">chess</option>
+                            <option selected value="5">...</option>
+                            <option value="0">ori</option>
+                            <option value="1">chess</option>
                             <option value="2">spicy</option>
                             <option value="3">mix</option>
                             <option value="4">salted egg</option>
                         </select></span>
                         <span><input data-add-${item+subItem} style="width: 100%;" type="text"></span>
-                        <span><input data-min-${item+subItem} style="width: 100%;" type="text"></span>
-                        <span >${element[1]} RM <button onclick = "addOrder(event)" data-add-order="${[item,subItem]}" class="add-order-btn">+</button></span>
+                        <span >${element[1]} RM <button onclick = "addOrder(event)" data-add-order="${[item,subItem]}">+</button></span>
                     </div>`
                         
                 }
@@ -74,9 +74,14 @@ showMenu(MENU)
 // hide and show submenu form item name
 const orderItems = document.querySelectorAll("[data-orderItemName]")
 orderItems.forEach(element => {
-   element.addEventListener("click",(e)=>{
+    
+    element.addEventListener("click",(e)=>{
+        orderItems.forEach(el =>{
+            document.querySelector(`[data-orderItem=${el.dataset.orderitemname}]`).classList.add("hide")
+        })
+        
         const name = e.target.dataset.orderitemname
-        document.querySelector(`[data-orderItem=${name}]`).classList.toggle("hide")
+        document.querySelector(`[data-orderItem=${name}]`).classList.remove("hide")
    }) 
 });
 
@@ -85,21 +90,22 @@ orderItems.forEach(element => {
 
 let allData = orderpala ;
 const addData = (data)=>{
-    let {customerName,item,subItem,pic,type,add,min}=data;
+    console.log(data)
+    let {customerName,item,subItem,pic,type,add}=data;
     
     if (allData.hasOwnProperty.call(allData, customerName)){
 
         if (allData[customerName].hasOwnProperty.call(allData[customerName],item)){
-            allData[customerName][item].push([subItem,pic,type,add,min])
+            allData[customerName][item].push([subItem,pic,type,add])
         }else{
             allData[customerName][item] = [] 
-            allData[customerName][item].push([subItem,pic,type,add,min])
+            allData[customerName][item].push([subItem,pic,type,add])
 
         }
     }else{
         allData[customerName] = {}
         allData[customerName][item]=[]
-        allData[customerName][item].push([subItem,pic,type,add,min])
+        allData[customerName][item].push([subItem,pic,type,add])
 
     }
     let xxx = rendarOneCustomerData(allData[customerName],customerName)
@@ -119,9 +125,8 @@ const getOrderData = (orderId)=>{
     const pic = orderIs.querySelector(`[data-pic-${item+subItem}]`).value
     const type = orderIs.querySelector(`[data-type-${item+subItem}]`).value
     const add = orderIs.querySelector(`[data-add-${item+subItem}]`).value
-    const min = orderIs.querySelector(`[data-min-${item+subItem}]`).value
     
-    addData({customerName,item,subItem,pic,type,add,min})
+    addData({customerName,item,subItem,pic,type,add})
     customerNameEl.disabled = true;
 }
  const addOrder = (e)=>{
@@ -130,4 +135,4 @@ const getOrderData = (orderId)=>{
 
   }
 
-  
+  console.log(showOrderEl)

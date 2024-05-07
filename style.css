@@ -1,15 +1,25 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 body{
     font-size: .8em;
     background-color: #f8f8f8;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+            flex-direction:column;
     font-family: Arial, Helvetica, sans-serif;
 }
 .container{
@@ -22,7 +32,8 @@ header{
     position: fixed;
     top:0;
     background-color: rgb(234, 231, 49);
-    box-shadow: .1rem .2rem .2rem #fff;
+    -webkit-box-shadow: .1rem .2rem .2rem #fff;
+            box-shadow: .1rem .2rem .2rem #fff;
 }
 .logo{
     text-align: center;
@@ -43,7 +54,15 @@ button{
     position: absolute;
     top:50%;
     right: 10%;
-    transform: translateY(-50%);
+    z-index: 1;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+.add-menu{
+    /* position: relative; */
+    right: 85%;
+    
 }
 .all-order{
     background-color: #fff;
@@ -79,6 +98,8 @@ button{
     font-size: 1.1em;
 }
 .sub-item{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: .4rem 0;
     padding: .2rem 0;
@@ -93,19 +114,22 @@ button{
 } */
 .sub-item span{
     font-size: 1.1em;
-    flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
     text-align: center;
 }
 .sub-item span:first-child{
-    flex-basis: 15rem;
+    -ms-flex-preferred-size: 15rem;
+        flex-basis: 15rem;
     text-align: start;
 }
 .sub-item span:nth-child(2){
-    flex-basis: 2rem;
+    -ms-flex-preferred-size: 2rem;
+        flex-basis: 2rem;
 }
 .sub-item span:last-child{
-    font-size: .5em;
-    text-align: end;
+    font-size: .7em;
+    text-align: center;
 
 }
 .price{
@@ -124,7 +148,6 @@ input,select{
     border: none;
     border-bottom: .1em solid #ddd;
 }
-
-.add-order-btn{
-  padding:.3em 1.5em;
+[data-add-order]{
+    padding: .2em 1.2em;
 }

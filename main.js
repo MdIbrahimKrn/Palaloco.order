@@ -4,6 +4,12 @@ const perOrderBody = document.getElementById("per-order-body")
 const getFullType = (type)=>{
     let fullType =""
     switch (type) {
+        case "5":
+            fullType = "..."
+            break;
+        case "0":
+            fullType = "original"
+            break;
         case "1":
             fullType = "chess"
             break;
@@ -25,15 +31,15 @@ const getFullType = (type)=>{
 
 const rendarOneCustomerData = (buyer,buyerName)=>{
     let price = 0;
-    let html = `<div class="item ">   
+    let html = `<div data-order="${buyerName}" class="item ">   
     <h3 ondblclick = "deleteOrder('${buyerName}')">${buyerName} <span data-price = ${buyerName} class="price">${price}</span></h3>
     <div style = "font-weight: 800;
     font-style: normal; font-size:1.1em" class="sub-item">   
                 <span>Item</span>
                 <span>pis</span>
                 <span>type</span>
-                <span>+</span>
-                <span>-</span>
+                <span>note</span>
+                <span>rm</span>
             </div>`
     
     for (const item in buyer) {
@@ -48,7 +54,7 @@ const rendarOneCustomerData = (buyer,buyerName)=>{
                 <span>${subItem[1] != null ? subItem[1] : '' }</span>
                 <span>${subItem[2] != null ? getFullType(subItem[2]) : '' }</span>
                 <span>${subItem[3] != null ? subItem[3] : '' }</span>
-                <span>${subItem[4] != null ? subItem[4] : '' }</span>
+                <span>${data[1]}</span>
             </div>
             `
 
@@ -79,16 +85,20 @@ const renderAllCustomerData = (orderpala,el)=>{
 
 
 
-
 const saveData = ()=>{
     setData("order",allData)
     setData("orderNumber",orderNumber+1)
     window.location.href = "index.html"
   }
   const deleteOrder = (customer)=>{
-    if (confirm("Do You wanto DELETE!!") == true) {  
-    delete orderpala[customer]
-    setData("order",orderpala)
-    window.location.href = "index.html"
-}
+    if(confirm("Do you want to DELETED!!")){
+        optional["doneOrder"][customer] = orderpala[customer]
+        delete orderpala[customer]
+        setData("order",orderpala)
+        setData("optional",optional)
+        document.querySelector(`[data-order='${customer}']`).classList.add("done")
+        // window.location.href = "index.html"
+    }
+    console.log(optional)
+
 }

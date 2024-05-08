@@ -91,21 +91,21 @@ orderItems.forEach(element => {
 let allData = orderpala ;
 const addData = (data)=>{
     console.log(data)
-    let {customerName,item,subItem,pic,type,add}=data;
+    const {customerName,item,subItem,pic,type,add}=data;
     
     if (allData.hasOwnProperty.call(allData, customerName)){
 
         if (allData[customerName].hasOwnProperty.call(allData[customerName],item)){
             allData[customerName][item].push([subItem,pic,type,add])
         }else{
-            allData[customerName][item] = [] 
-            allData[customerName][item].push([subItem,pic,type,add])
+            allData[customerName][item] = [[subItem,pic,type,add]] 
+            // allData[customerName][item].push([subItem,pic,type,add])
 
         }
     }else{
         allData[customerName] = {}
-        allData[customerName][item]=[]
-        allData[customerName][item].push([subItem,pic,type,add])
+        allData[customerName][item]=[[subItem,pic,type,add]]
+        // allData[customerName][item].push([subItem,pic,type,add])
 
     }
     let xxx = rendarOneCustomerData(allData[customerName],customerName)
